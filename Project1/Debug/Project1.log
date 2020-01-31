@@ -1,0 +1,21 @@
+﻿  Source.cpp
+D:\Kursovaya\Project1\matrix.h(128,2): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Kursovaya\Project1\matrix.h(127): message : во время компиляции функции-члена класс шаблон "std::ostream &operator <<(std::ostream &,const matrix<double> &)"
+D:\Kursovaya\Project1\Source.cpp(27): message : выполняется компиляция ссылки на экземпляр шаблон функции "std::ostream &operator <<(std::ostream &,const matrix<double> &)"
+D:\Kursovaya\Project1\NN.h(6): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "matrix<double>"
+D:\Kursovaya\Project1\matrix.h(129,2): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Kursovaya\Project1\matrix.h(15,2): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Kursovaya\Project1\matrix.h(13): message : во время компиляции функции-члена класс шаблон "matrix<double>::matrix(std::vector<std::vector<T,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>)"
+D:\Kursovaya\Project1\matrix.h(13): message :         with
+D:\Kursovaya\Project1\matrix.h(13): message :         [
+D:\Kursovaya\Project1\matrix.h(13): message :             T=double,
+D:\Kursovaya\Project1\matrix.h(13): message :             _Ty=double
+D:\Kursovaya\Project1\matrix.h(13): message :         ]
+D:\Kursovaya\Project1\Source.cpp(15): message : выполняется компиляция ссылки на экземпляр шаблон функции "matrix<double>::matrix(std::vector<std::vector<T,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>)"
+D:\Kursovaya\Project1\Source.cpp(15): message :         with
+D:\Kursovaya\Project1\Source.cpp(15): message :         [
+D:\Kursovaya\Project1\Source.cpp(15): message :             T=double,
+D:\Kursovaya\Project1\Source.cpp(15): message :             _Ty=double
+D:\Kursovaya\Project1\Source.cpp(15): message :         ]
+D:\Kursovaya\Project1\matrix.h(17,2): warning C4018: <: несоответствие типов со знаком и без знака
+  Project1.vcxproj -> D:\Kursovaya\Debug\Project1.exe
