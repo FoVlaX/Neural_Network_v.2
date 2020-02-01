@@ -1,7 +1,7 @@
 #include "NN.h"
 
 double RF() {
-	return double(rand() % 2456) / 2457.0;
+	return double(rand() % 2456) / 2457.0; //функция для случайного задания весов и  дополений
 }
 
 NN::NN(int n, int m, int In, int Out)
@@ -17,7 +17,7 @@ NN::NN(int n, int m, int In, int Out)
 
 	for (int i = 1; i < n; i++) {
 		W[i].SetRandFunc(RF);
-		W[i].change(m, m);
+		W[i].change(m, m);                          //создаем матрицы весов и веторы дополнений и заполняем их случайными значениями в соответвии с входными параметрами
 		b[i].SetRandFunc(RF);
 		b[i].change(m, 1);
 	}
@@ -56,7 +56,7 @@ answer NN::feedfoward(matrix<double> a)
 	f.h.push_back(a);
 
 	for (int i = 0; i < deep+1; i++) {
-		matrix<double> s = W[i] * f.f[i] + b[i];
+		matrix<double> s = W[i] * f.f[i] + b[i]; //прямое прохожение по сети
 		f.h.push_back(s);
 		s = Afun(s);
 		f.f.push_back(s);
@@ -68,8 +68,8 @@ answer NN::feedfoward(matrix<double> a)
 void NN::teach(matrix<double> In, matrix<double> Out)
 {
 	answer ans;
-	ans = feedfoward(In);
-	matrix<double> y = ans.ans;
+	ans = feedfoward(In); //прямое прохождение получение необходимых значений нейронвов 
+	matrix<double> y = ans.ans; //присваивание значений для удобства локальным переменным
 	vector<matrix<double>> f = ans.f;
 	vector<matrix<double>> h = ans.h;
 	vector<matrix<double>> d_W = W;
@@ -77,23 +77,23 @@ void NN::teach(matrix<double> In, matrix<double> Out)
 	int l = 1;
 	matrix<double> Y;
 	
+	//здесь мы наодим чатсные производные по весам и дополнениям по квадратичной функции ошибки (Out - y)^2/2 где у - вывод нейросети Out - эталонное значение
 
-
-	Y =  (Out - y) * d_Afun(h[deep + 1]);
+	Y =  (Out - y) * d_Afun(h[deep + 1]); //нахоим производную по конечный дополнениям
 	
 	while (deep + 2 - l > 0)
 	{
-		d_b[deep + 1 - l] = Y;
-		d_W[deep + 1 - l] = Y * f[deep + 1 - l].Tr();
+		d_b[deep + 1 - l] = Y; //частные производные по дополнениям
+		d_W[deep + 1 - l] = Y * f[deep + 1 - l].Tr(); //частные производные по весам
 		if (deep + 2 - l > 1) {
-			Y = (Y.Tr() * W[deep + 1 - l]).Tr() * d_Afun(h[deep + 1 - l]);
+			Y = (Y.Tr() * W[deep + 1 - l]).Tr() * d_Afun(h[deep + 1 - l]); //частные производные дополнений следующего слоя
 		}
-		l++;
+		l++; //обратное прохождение
 	}
 
 	for (int i = 0; i < deep + 1; i++)
 	{
-		b[i] = b[i] + 0.8*d_b[i];
+		b[i] = b[i] + 0.8*d_b[i]; // изменение весов и дополнение на полученные значения частных производных
 		W[i] = W[i] + 0.8*d_W[i];
 	}
 }
@@ -151,7 +151,7 @@ void NN::load(string str)
 
 double NN::Afun_e(double a)
 {
-	return 1 / ( 1 + exp(-0.004*a));
+	return 1 / ( 1 + exp(-0.004*a)); //испольуем сигмоиду
 }
 
 double NN::d_Afun_e(double a)
