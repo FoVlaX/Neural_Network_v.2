@@ -1,0 +1,19 @@
+	Quantum* pixels;
+	for (int i = 0; i < 11; i++) {
+		string str = "image/"+to_string(i) + ".png";
+		image.read(str);
+
+		int w = image.columns();
+		int h = image.rows();
+
+		digits[i].change(w * h, 1);
+
+		pixels = image.getPixels(0, 0, w, h);
+
+		// now you can access single pixels like a vector
+		for (int row = 0; row < h; row++) {
+			for (int column = 0; column < w; column++) {
+				digits[i][w*row+column][0] = double(65535-pixels[w * row + column])/65535.0;
+			}
+		}
+	}
