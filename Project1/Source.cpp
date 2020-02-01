@@ -36,13 +36,23 @@ int main(int argc, char** argv) {
 	const int count = 0;
 	for (int i = 0; i < count; i++){
 		network.teach(train[i], a[(int)labels[i]]);
-		if (i % 30) {
+		if (i % 300 == 0) {
 			system("cls");
 			cout << (double(i) / count * 100);
 		}
 	}
 	cout.precision(3);
-	cout <<endl<< fixed << network.feedfoward(train[4]).ans << endl << (int)labels[4];
-	network.save("test.txt");
+	int stat = 0;
+	for (int i = 0; i < 60000; i++) {
+		if (network.feedfoward(train[i]).ans.MaxIndex().first == (int)labels[i]) {
+			stat++;
+		}
+		if (i % 300 == 0) {
+			system("cls");
+			cout << (double(i) / 600);
+		}
+	}
+	cout <<endl<< double(stat) / 600;
+	//network.save("test.txt");
 	return 0;
 }
