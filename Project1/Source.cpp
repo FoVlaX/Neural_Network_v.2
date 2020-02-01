@@ -5,7 +5,7 @@
 #include <Magick++.h>
 #include "MNIST.h"
 using namespace std; 
-using namespace Magick; //библиотека для работы с изоббражениями в  данном примери не используюю код есть в imageMagicCode.txt в папке image
+using namespace Magick; //библиотека для работы с изоббражениями в  данном примере не используюю код есть в imageMagicCode.txt в папке image
 
 	double RandFunc() { //функция получения значений случайных, может быть передана в класс matrix для генерации значений в матрице
 		return double(rand() % 2456)/2457.0; 
