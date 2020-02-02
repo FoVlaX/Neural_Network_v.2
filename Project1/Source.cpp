@@ -4,6 +4,10 @@
 #include <algorithm>
 #include <Magick++.h>
 #include "MNIST.h"
+
+
+
+
 using namespace std; 
 using namespace Magick; //библиотека для работы с изоббражениями в  данном примери не используюю код есть в imageMagicCode.txt в папке image
 
@@ -46,12 +50,25 @@ int main(int argc, char** argv) {
 		if (network.feedfoward(train[i]).ans.MaxIndex().first == (int)labels[i]) { //если ответ нейросети совпадаает с эталонным значением MaxIndex().first выдает индекс максимального элемента в матрице т.е. максимальную вероятность что этот индекс и есть нужная цифра
 			stat++;//прибавляем к колву верных решений
 		}
+		
 		if (i % 300 == 0) {
 			system("cls");
 			cout << (double(i) / 100);
 		}
 	}
+
+	matrix<char>  img(28, 28); //для вывода цифры на экран
+
+	for (int i = 0; i < 28; i++) {
+		for (int j = 0; j < 28; j++) {
+			if (train[1446][28 * i + j][0] > 0)
+				img[i][j] = '#';
+			else
+				img[i][j] = ' ';
+		}
+	}
+	cout << endl << img << endl <<(int) labels[1446];
 	cout <<endl<< double(stat) / 100; //вывод процента верных решений
-	//network.save("test.txt");
+   //	network.save("test.txt");
 	return 0;
 }

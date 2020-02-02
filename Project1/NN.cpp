@@ -153,7 +153,7 @@ void NN::load(string str)
 
 double NN::Afun_e(double a)
 {
-	return 1 / ( 1 + exp(-0.004*a)); //испольуем сигмоиду
+	return 1 / ( 1 + exp(-0.01*a)); //испольуем сигмоиду
 }
 
 double NN::d_Afun_e(double a)

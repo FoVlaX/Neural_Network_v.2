@@ -1,4 +1,5 @@
-	Quantum* pixels;
+Image image;
+Quantum* pixels;
 	for (int i = 0; i < 11; i++) {
 		string str = "image/"+to_string(i) + ".png";
 		image.read(str);
